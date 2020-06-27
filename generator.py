@@ -1,6 +1,7 @@
 import os
 import csv
 import argparse
+import sys
 
 ##iterate all records in the data
 def dGenerateCars():
@@ -39,6 +40,26 @@ def dGenerateCars():
                 #print(count)
                 yield row
 
+def plotit(car_id):
+
+    thelist= []
+
+    for c in dGenerateCars():
+
+        if c[1]==theid:
+            thelist.append(c)
+
+    thelist =sorted(thelist, key=lambda r: r[2])
+    print(thelist)
+
+    milages = []
+    dates = []
+    for a in thelist:
+        milages.append(a[6])
+        dates.append(a[2])
+
+
+
 if __name__ == "__main__":
     # this won't be run when imported
 
@@ -46,6 +67,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='comparing books for unique words')
     parser.add_argument('carid',nargs=1,
                    help='search all records for all occurences of specified car_id')
+    parser.add_argument('--plot', dest='plot', action='store_true',
+               help='plot it')
 
     args = parser.parse_args()
 
@@ -54,7 +77,10 @@ if __name__ == "__main__":
                    
     theid = args.carid.pop()
 
-    help = ""
+    if args.plot:
+        plotit(theid)
+        sys.exit()
+
     for c in dGenerateCars():
         #if len(c)<2:
         #    print("??")
@@ -63,9 +89,6 @@ if __name__ == "__main__":
         #if c[1]=='591469624':
         if c[1]==theid:
             print(c)
-        
-        #if len(c)>14:
-        #    help+=("\""+c[0]+"\",")
 
     print(help)
         

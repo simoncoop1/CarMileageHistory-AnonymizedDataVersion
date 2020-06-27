@@ -1,5 +1,6 @@
 import sqlite3
 import generator
+import datetime
 
 ##dont import these test records because the have too many fields!
 bad_test_ids = ["233955117","386678619","1359254837","904428237","375221213","869423849",
@@ -53,16 +54,55 @@ bad_test_ids = ["233955117","386678619","1359254837","904428237","375221213","86
                 "313454889","198990771","331750033","1530291231","1232126653","917126253",
                 "269009789"]
 
+def importr():
+
+    for r in generator.dGenerateCars():
+
+        #c.execute("""INSERT INTO MOT (test_id, vehicle_id, test_date,test_class_id,test_type,test_result,test_mileage,postcode_area,make,model,colour,fuel_type,cylinder_capacity,first_use_date)
+        #          values("""+r[0]+""","""+r[1]+""", date("""+r[2]+"""),"""+r[3]+""","""+r[4]+""","""+r[5]+""","""+r[6]+""","""+r[7]+""","""+r[8]+""","""+r[9]+""","""+r[10]+""","""+r[11]+""","""+r[12]+""",date("""+r[13]+"""))""")
+        if r[0]=="test_id": #dont do headers
+            continue
+
+        ##about 200 records contain too many field, so ignore them
+        if len(r)!=14:
+            continue
+
+        #try:
+        #    datetime.datetime.strptime(r[13], '%Y-%m-%d')
+        #except ValueError:
+        #    r[13]=""      
+
+        try:
+            c.execute("""INSERT INTO MOT (test_id, vehicle_id, test_date,test_class_id,test_type,test_result,test_mileage,postcode_area,make,model,colour,fuel_type,cylinder_capacity,first_use_date)
+                      values("""+r[0]+""","""+r[1]+""","""+"'"+r[2]+"'"+""","""+r[3]+""","""+"'"+r[4]+"'"+""","""+"'"+r[5]+"'"+""","""+"'"+r[6]+"'"+""","""+"'"+r[7]+"'"+""","""+"'"+r[8].translate(str.maketrans({"'":  r"''"}))+"'"+""","""+"'"+r[9].translate(str.maketrans({"'":  r"''"}))+"'"+""","""+"'"+r[10]+"'"+""","""+"'"+r[11]+"'"+""","""+"'"+r[12]+"'"+""","""+"'"+r[13]+"'"+""")""")
+        except Exception as e:
+            print(r)
+            print(r[4])
+            print(r[13])
+            print(len(r))
+            raise e
+            break
+
+
+
+    conn.commit() #commit needed
+    c.close()
+
 def createTable():
     c.execute("""CREATE TABLE MOT
                  (test_id,vehicle_id, test_date,test_class_id,test_type,test_result,test_mileage,postcode_area,make,model,colour,fuel_type,cylinder_capacity,first_use_date)""")
-
 
 db_path = 'the.db'
 conn = sqlite3.connect(db_path)
 c = conn.cursor()
 
 
+
+#for row in c.execute("""SELECT vehicle_id,test_date,test_mileage FROM MOT WHERE vehicle_id=591469624"""):
+#    print(row)
+
+#createTable()
+importr()
 
 
 
@@ -71,30 +111,6 @@ c = conn.cursor()
 #does table exist?
 #createTable()
 
-for r in generator.dGenerateCars():
 
-    #c.execute("""INSERT INTO MOT (test_id, vehicle_id, test_date,test_class_id,test_type,test_result,test_mileage,postcode_area,make,model,colour,fuel_type,cylinder_capacity,first_use_date)
-    #          values("""+r[0]+""","""+r[1]+""", date("""+r[2]+"""),"""+r[3]+""","""+r[4]+""","""+r[5]+""","""+r[6]+""","""+r[7]+""","""+r[8]+""","""+r[9]+""","""+r[10]+""","""+r[11]+""","""+r[12]+""",date("""+r[13]+"""))""")
-    if r[0]=="test_id": #dont do headers
-        continue
-
-    ##about 200 records contain too many field, so ignore them
-    if len(r)>14:
-        continue
-
-
-    try:
-        c.execute("""INSERT INTO MOT (test_id, vehicle_id, test_date,test_class_id,test_type,test_result,test_mileage,postcode_area,make,model,colour,fuel_type,cylinder_capacity,first_use_date)
-                  values("""+r[0]+""","""+r[1]+""",Date("""+r[2]+"""),"""+r[3]+""","""+"'"+r[4]+"'"+""","""+"'"+r[5]+"'"+""","""+"'"+r[6]+"'"+""","""+"'"+r[7]+"'"+""","""+"'"+r[8].translate(str.maketrans({"'":  r"''"}))+"'"+""","""+"'"+r[9].translate(str.maketrans({"'":  r"''"}))+"'"+""","""+"'"+r[10]+"'"+""","""+"'"+r[11]+"'"+""","""+"'"+r[12]+"'"+""",Date("""+r[13]+"""))""")
-    except Exception as e:
-        print(r)
-        print(r[4])
-        raise e
-        break
-
-
-
-conn.commit() #commit needed
-c.close()
 
 
