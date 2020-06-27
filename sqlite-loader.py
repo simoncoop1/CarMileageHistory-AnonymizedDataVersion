@@ -56,6 +56,12 @@ bad_test_ids = ["233955117","386678619","1359254837","904428237","375221213","86
 
 def importr():
 
+    #only import to an empty table
+    row = c.execute("""SELECT * from MOT limit 1""")
+    if row is not None:
+        print("MOT table not empty, import abort.")
+        return
+
     for r in generator.dGenerateCars():
 
         #c.execute("""INSERT INTO MOT (test_id, vehicle_id, test_date,test_class_id,test_type,test_result,test_mileage,postcode_area,make,model,colour,fuel_type,cylinder_capacity,first_use_date)
@@ -83,12 +89,17 @@ def importr():
             raise e
             break
 
-
-
     conn.commit() #commit needed
     c.close()
 
 def createTable():
+
+    ##check is table already exists
+    row = c.execute("""SELECT name FROM sqlite_master WHERE type='table' AND name='MOT';""").fetchone()
+    if row is not None:
+        print("table does exist")
+        return
+
     c.execute("""CREATE TABLE MOT
                  (test_id,vehicle_id, test_date,test_class_id,test_type,test_result,test_mileage,postcode_area,make,model,colour,fuel_type,cylinder_capacity,first_use_date)""")
 
@@ -96,20 +107,11 @@ db_path = 'the.db'
 conn = sqlite3.connect(db_path)
 c = conn.cursor()
 
-
-
 #for row in c.execute("""SELECT vehicle_id,test_date,test_mileage FROM MOT WHERE vehicle_id=591469624"""):
 #    print(row)
 
-#createTable()
+createTable()
 importr()
-
-
-
-#use date function for import
-#createTable()
-#does table exist?
-#createTable()
 
 
 
