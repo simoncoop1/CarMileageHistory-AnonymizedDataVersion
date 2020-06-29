@@ -78,32 +78,38 @@ if __name__ == "__main__":
 
     #parse arguments
     parser = argparse.ArgumentParser(description='comparing books for unique words')
-    parser.add_argument('carid',nargs=1,
-                   help='search all records for all occurences of specified car_id')
-    parser.add_argument('--plot', dest='plot', action='store_true',
-               help='plot it')
+    parser.add_argument('regdate_motdate_motmileage',nargs=3,
+                   help="""to de-anonymise data give the date vehicle was first 
+                           registered, a date of an mot, and the mileage at that mot.
+                            e.g "2008-04-01 2017-02-12 48901" would be the correct
+                            parameter for first registered 1st April 2008, and MOT
+                            on 12th Feb 2017, and an mileage at this MOT of 48901.""")
+    parser.add_argument('--carid',dest='carid',
+                   help='if you already know the carid you can provide it')
+    parser.add_argument('--no_plot', dest='no_plot', action='store_true',
+               help='if you just want just text data and no plot')
 
     args = parser.parse_args()
 
     #print(args.carid)
 
-                   
-    theid = args.carid.pop()
+    if args.carid is not None:               
+        theid = args.carid
 
-    if args.plot:
-        plotit(theid)
+
+    #theid = GetCarID("2007-05-01","2017-04-04","69646")
+    #theid = GetCarID("2007-03-21","2017-06-30","114124")
+    
+
+    if args.carid is None:
+        theid = GetCarID(args.regdate_motdate_motmileage[0],args.regdate_motdate_motmileage[1],args.regdate_motdate_motmileage[2])
+
+    if args.no_plot:
+        for c in dGenerateCars():
+            if c[1]==carid:
+              print(c)
         sys.exit()
 
-    #for c in dGenerateCars():
-        #if len(c)<2:
-        #    print("??")
-        #    print(c)
-        #    continue
-    #    if c[1]=='1103092882':
-    #        print(c)
-
-
-    theid = GetCarID("2007-05-01","2017-04-04","69646")
     plotit(theid)
        
 
