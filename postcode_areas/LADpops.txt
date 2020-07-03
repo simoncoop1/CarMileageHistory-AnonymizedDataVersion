@@ -1,0 +1,379 @@
+County Durham
+Darlington
+Hartlepool
+Middlesbrough
+Northumberland
+Redcar and Cleveland
+Stockton-on-Tees
+Gateshead
+Newcastle upon Tyne
+North Tyneside
+South Tyneside
+Sunderland
+Blackburn with Darwen
+Blackpool
+Cheshire East
+Cheshire West and Chester
+Halton
+Warrington
+Allerdale
+Barrow-in-Furness
+Carlisle
+Copeland
+Eden
+South Lakeland
+Bolton
+Bury
+Manchester
+Oldham
+Rochdale
+Salford
+Stockport
+Tameside
+Trafford
+Wigan
+Burnley
+Chorley
+Fylde
+Hyndburn
+Lancaster
+Pendle
+Preston
+Ribble Valley
+Rossendale
+South Ribble
+West Lancashire
+Wyre
+Knowsley
+Liverpool
+Sefton
+St. Helens
+Wirral
+East Riding of Yorkshire
+Kingston upon Hull, City of
+North East Lincolnshire
+North Lincolnshire
+York
+Craven
+Hambleton
+Harrogate
+Richmondshire
+Ryedale
+Scarborough
+Selby
+Barnsley
+Doncaster
+Rotherham
+Sheffield
+Bradford
+Calderdale
+Kirklees
+Leeds
+Wakefield
+Derby
+Leicester
+Nottingham
+Rutland
+Amber Valley
+Bolsover
+Chesterfield
+Derbyshire Dales
+Erewash
+High Peak
+North East Derbyshire
+South Derbyshire
+Blaby
+Charnwood
+Harborough
+Hinckley and Bosworth
+Melton
+North West Leicestershire
+Oadby and Wigston
+Boston
+East Lindsey
+Lincoln
+North Kesteven
+South Holland
+South Kesteven
+West Lindsey
+Corby
+Daventry
+East Northamptonshire
+Kettering
+Northampton
+South Northamptonshire
+Wellingborough
+Ashfield
+Bassetlaw
+Broxtowe
+Gedling
+Mansfield
+Newark and Sherwood
+Rushcliffe
+Herefordshire, County of
+Shropshire
+Stoke-on-Trent
+Telford and Wrekin
+Cannock Chase
+East Staffordshire
+Lichfield
+Newcastle-under-Lyme
+South Staffordshire
+Stafford
+Staffordshire Moorlands
+Tamworth
+North Warwickshire
+Nuneaton and Bedworth
+Rugby
+Stratford-on-Avon
+Warwick
+Birmingham
+Coventry
+Dudley
+Sandwell
+Solihull
+Walsall
+Wolverhampton
+Bromsgrove
+Malvern Hills
+Redditch
+Worcester
+Wychavon
+Wyre Forest
+Bedford
+Central Bedfordshire
+Luton
+Peterborough
+Southend-on-Sea
+Thurrock
+Cambridge
+East Cambridgeshire
+Fenland
+Huntingdonshire
+South Cambridgeshire
+Basildon
+Braintree
+Brentwood
+Castle Point
+Chelmsford
+Colchester
+Epping Forest
+Harlow
+Maldon
+Rochford
+Tendring
+Uttlesford
+Broxbourne
+Dacorum
+East Hertfordshire
+Hertsmere
+North Hertfordshire
+St Albans
+Stevenage
+Three Rivers
+Watford
+Welwyn Hatfield
+Breckland
+Broadland
+Great Yarmouth
+King's Lynn and West Norfolk
+North Norfolk
+Norwich
+South Norfolk
+Babergh
+East Suffolk
+Ipswich
+Mid Suffolk
+West Suffolk
+Camden
+City of London
+Hackney
+Hammersmith and Fulham
+Haringey
+Islington
+Kensington and Chelsea
+Lambeth
+Lewisham
+Newham
+Southwark
+Tower Hamlets
+Wandsworth
+Westminster
+Barking and Dagenham
+Barnet
+Bexley
+Brent
+Bromley
+Croydon
+Ealing
+Enfield
+Greenwich
+Harrow
+Havering
+Hillingdon
+Hounslow
+Kingston upon Thames
+Merton
+Redbridge
+Richmond upon Thames
+Sutton
+Waltham Forest
+Bracknell Forest
+Brighton and Hove
+Isle of Wight
+Medway
+Milton Keynes
+Portsmouth
+Reading
+Slough
+Southampton
+West Berkshire
+Windsor and Maidenhead
+Wokingham
+Buckinghamshire
+Eastbourne
+Hastings
+Lewes
+Rother
+Wealden
+Basingstoke and Deane
+East Hampshire
+Eastleigh
+Fareham
+Gosport
+Hart
+Havant
+New Forest
+Rushmoor
+Test Valley
+Winchester
+Ashford
+Canterbury
+Dartford
+Dover
+Folkestone and Hythe
+Gravesham
+Maidstone
+Sevenoaks
+Swale
+Thanet
+Tonbridge and Malling
+Tunbridge Wells
+Cherwell
+Oxford
+South Oxfordshire
+Vale of White Horse
+West Oxfordshire
+Elmbridge
+Epsom and Ewell
+Guildford
+Mole Valley
+Reigate and Banstead
+Runnymede
+Spelthorne
+Surrey Heath
+Tandridge
+Waverley
+Woking
+Adur
+Arun
+Chichester
+Crawley
+Horsham
+Mid Sussex
+Worthing
+Bath and North East Somerset
+Bournemouth, Christchurch and Poole
+Bristol, City of
+Cornwall
+Dorset
+Isles of Scilly
+North Somerset
+Plymouth
+South Gloucestershire
+Swindon
+Torbay
+Wiltshire
+East Devon
+Exeter
+Mid Devon
+North Devon
+South Hams
+Teignbridge
+Torridge
+West Devon
+Cheltenham
+Cotswold
+Forest of Dean
+Gloucester
+Stroud
+Tewkesbury
+Mendip
+Sedgemoor
+Somerset West and Taunton
+South Somerset
+Isle of Anglesey
+Gwynedd
+Conwy
+Denbighshire
+Flintshire
+Wrexham
+Powys
+Ceredigion
+Pembrokeshire
+Carmarthenshire
+Swansea
+Neath Port Talbot
+Bridgend
+Vale of Glamorgan
+Cardiff
+Rhondda Cynon Taf
+Merthyr Tydfil
+Caerphilly
+Blaenau Gwent
+Torfaen
+Monmouthshire
+Newport
+Aberdeen City
+Aberdeenshire
+Angus
+Argyll and Bute
+City of Edinburgh
+Clackmannanshire
+Dumfries and Galloway
+Dundee City
+East Ayrshire
+East Dunbartonshire
+East Lothian
+East Renfrewshire
+Falkirk
+Fife
+Glasgow City
+Highland
+Inverclyde
+Midlothian
+Moray
+Na h-Eileanan Siar
+North Ayrshire
+North Lanarkshire
+Orkney Islands
+Perth and Kinross
+Renfrewshire
+Scottish Borders
+Shetland Islands
+South Ayrshire
+South Lanarkshire
+Stirling
+West Dunbartonshire
+West Lothian
+Antrim and Newtownabbey
+Ards and North Down
+Armagh City, Banbridge and Craigavon
+Belfast
+Causeway Coast and Glens
+Derry City and Strabane
+Fermanagh and Omagh
+Lisburn and Castlereagh
+Mid and East Antrim
+Mid Ulster
+Newry, Mourne and Down
