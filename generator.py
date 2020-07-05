@@ -20,8 +20,6 @@ def dGenerateCars():
         if f.endswith(".csv"):
             filescsv.append(f)
 
-
-
     for f in filestxt:
 
 
@@ -246,7 +244,25 @@ if __name__ == "__main__":
     if args.question4 is True:
         #which county has most rolls royce per captita
         #work out rols royce per capita for all post code areas
-        p_pcode_area = {'AL': 271312.57846788695, 'B': 2001645.1792515158, 'BA': 441125.7384486151, 'BB': 489583.61069465044, 'BD': 589832.7940888732, 'BH': 567003.6375206348, 'BL': 404752.5838243801, 'BN': 856361.6458174149, 'BR': 311822.7817972954, 'BS': 948801.9088444001, 'CA': 319452.60448446753, 'CB': 198194.72290071796, 'CF': 1043600.7984997848, 'CH': 658413.216432643, 'CM': 630161.25542235, 'CO': 455150.1055115506, 'CR': 417625.8281461846, 'CT': 511626.66187961947, 'CV': 788146.3801269259, 'CW': 299039.1080764709, 'DA': 461028.36693536275, 'DE': 470358.7156893601, 'DG': 207.40076335877862, 'DH': 301470.18549289874, 'DL': 394387.23258673307, 'DN': 718020.5254177209, 'DT': 226322.9644683427, 'DY': 400473.2944185027, 'E': 1136572.1873367522, 'EC': 59389.21998017208, 'EN': 382172.15707005456, 'EX': 602125.4866535115, 'FY': 235327.8344431818, 'GL': 602687.7972449826, 'GU': 695787.1251048397, 'HA': 427189.21128425474, 'HD': 266243.3313040242, 'HG': 131495.87357721155, 'HP': 484089.7725321442, 'HR': 181703.84890670457, 'HU': 372709.21839671116, 'HX': 164198.88596978196, 'IG': 354145.75007775985, 'IP': 655494.8090906369, 'KT': 569383.5956525605, 'L': 912453.7903966847, 'LA': 338497.29197771655, 'LD': 48201.52058158851, 'LE': 952679.4592372143, 'LL': 543803.5107282264, 'LN': 262003.6080854539, 'LS': 832760.9278934912, 'LU': 270944.2902982057, 'M': 1249563.1764649397, 'ME': 646265.1255205923, 'MK': 436861.0087534517, 'N': 922025.7389422061, 'NE': 1198844.0213290032, 'NG': 1253685.2004739712, 'NN': 587817.9565670957, 'NP': 510912.79630932066, 'NR': 746466.0017211306, 'NW': 417812.11522074154, 'OL': 499783.9605653971, 'OX': 434983.75164908764, 'PE': 937825.1469105138, 'PL': 549974.0687446359, 'PO': 859597.2883548806, 'PR': 525098.9194726355, 'RG': 732455.3732176973, 'RH': 565090.9190336774, 'RM': 566845.7229417237, 'S': 1287349.8137038366, 'SA': 753997.9370042654, 'SE': 1092005.0394851856, 'SG': 374471.5614645335, 'SK': 619668.4363776982, 'SL': 419784.04820187285, 'SM': 230115.9787313939, 'SN': 498571.4154624558, 'SO': 687264.9108044809, 'SP': 263741.5414025115, 'SR': 249550.9831020527, 'SS': 553051.077132948, 'ST': 616174.3459627255, 'SW': 962814.9273024341, 'SY': 360998.8287945703, 'TA': 342386.23025779874, 'TD': 15905.568251926878, 'TF': 235629.77774098935, 'TN': 751106.6472950772, 'TQ': 295101.05693519517, 'TR': 321430.95550881734, 'TS': 571965.3529400739, 'TW': 509760.1917422045, 'UB': 366277.5801005688, 'W': 592391.2494658303, 'WA': 696991.6055345163, 'WC': 61714.0018509975, 'WD': 272812.3911275196, 'WF': 543908.0553234728, 'WN': 297706.61380219203, 'WR': 297710.73898024147, 'WS': 450718.4001089022, 'WV': 409518.0881036483, 'YO': 461690.0279718355}
+        p_pcode_area = {'pc': 0, 'AB': 533950.8817646004, 'AL': 269738.17571000225, 'B': 1991073.057345411, 'BA': 423807.9909564766, 'BB': 495689.08093591925, 'BD': 587095.3642845196, 'BH': 559099.3527650888, 'BL': 380872.9611814539, 'BN': 857079.7927516169, 'BR': 307362.5492488172, 'BS': 968932.412706771, 'BT': 1893667.0, 'CA': 323799.8125014299, 'CB': 210616.86297197975, 'CF': 1037681.386420321, 'CH': 480165.3952346568, 'CM': 642444.3080168071, 'CO': 447064.1610122909, 'CR': 430925.1156062462, 'CT': 514088.21861251927, 'CV': 786701.4545968267, 'CW': 299948.2753186591, 'DA': 464740.73301721073, 'DD': 279142.4598993904, 'DE': 490098.7113398885, 'DG': 146355.51817132343, 'DH': 308478.781088173, 'DL': 387755.67623796564, 'DN': 699747.3769466791, 'DT': 220768.0267760806, 'DY': 389260.99044594564, 'E': 1119234.672264762, 'EC': 133221.2997810118, 'EH': 939644.6603634906, 'EN': 362288.2218389178, 'EX': 597943.441391508, 'FK': 283758.7354659648, 'FY': 234952.7794216419, 'G': 1181513.5725514372, 'GL': 589244.106014495, 'GU': 697870.717283279, 'HA': 408366.34827458265, 'HD': 284751.9199649316, 'HG': 128614.0084220901, 'HP': 506134.6107135518, 'HR': 183913.0011400514, 'HS': 14544.13620430646, 'HU': 340277.96157760813, 'HX': 164959.15831571055, 'IG': 381573.6543259759, 'IP': 661504.0919179018, 'IV': 218756.14384431014, 'KA': 367098.47915853723, 'KT': 554763.8963340883, 'KW': 51740.01382989233, 'KY': 378074.3489868345, 'L': 1108332.1981691574, 'LA': 336673.29405858513, 'LD': 49203.966229357015, 'LE': 961880.8604996909, 'LL': 543980.2086851299, 'LN': 269764.3191595417, 'LS': 835613.4330083781, 'LU': 275247.95855747827, 'M': 1292764.4279642196, 'ME': 648798.3491079231, 'MK': 420074.4994829539, 'ML': 385882.59785766416, 'N': 835609.21570022, 'NE': 1198420.831242167, 'NG': 1237977.4291670364, 'NN': 603556.4922857445, 'NP': 520252.5975986275, 'NR': 728213.7707923241, 'NW': 402507.0838701482, 'OL': 496694.2240033805, 'OX': 435400.3182146322, 'PA': 215111.11302522206, 'PE': 936948.9687222829, 'PH': 164557.40302336126, 'PL': 542975.3088715959, 'PO': 848881.4882557077, 'PR': 525127.417398752, 'RG': 744876.4295915223, 'RH': 560065.122925983, 'RM': 557175.6798677116, 'S': 1286313.9705775506, 'SA': 752679.0497433741, 'SE': 1080603.70042657, 'SG': 362730.04196034675, 'SK': 609981.7095787606, 'SL': 406966.4332642214, 'SM': 223227.2367348285, 'SN': 500631.016987324, 'SO': 733031.7925245425, 'SP': 245930.11979584885, 'SR': 249242.44838776445, 'SS': 546250.2626453729, 'ST': 611587.90434149, 'SW': 943604.7887399129, 'SY': 356282.39542570163, 'TA': 341618.90271312697, 'TD': 114906.08665934893, 'TF': 218438.3171026652, 'TN': 743591.3674664351, 'TQ': 300273.17710272997, 'TR': 328282.37027171016, 'TS': 553014.2886462638, 'TW': 541032.4083310588, 'UB': 340395.6334744352, 'W': 643151.3069980209, 'WA': 671518.1500460687, 'WC': 102596.88463750099, 'WD': 280728.4095256867, 'WF': 519310.62808433414, 'WN': 293698.0223223254, 'WR': 304796.4367139767, 'WS': 468716.67819454387, 'WV': 422266.1678966084, 'XX' : 0, 'YO': 526262.0220911006, 'ZE': 22920.0}
+
+
+        #temp does mot data cover this postal code this exist
+        #test11 = { "pc" : 0, "BT" : 0, "EC" : 0 , "GI" : 0 , "GY": 0 , "HS" : 0 , "WC" : 0 , "ZE" : 0 }
+        #for c in dGenerateCars():
+        #    if c[7] in test11.keys():
+        #        test11[c[7]] += 1
+
+        #test11.pop('pc', None)
+        #test11.pop('BT', None)
+        #test11.pop('EC', None)
+        #test11.pop('GI', None)
+        #test11.pop('GY', None)
+        #test11.pop('WC', None)
+        #print(test11)
+
+
+    
         cict = {}
         for a in p_pcode_area.keys():
             cict[a] = 0
@@ -254,35 +270,57 @@ if __name__ == "__main__":
         for c in dGenerateCars():
             if len(c[7])==0:
                 continue
-            if c[7]=="EH": #for some reason my postcode data excludes EH postcode
-                continue
-            if c[7]=="ML": #for some reason my postcode data excludes ML postcode
-                continue
-            if c[7]=="G": #for some reason my postcode data excludes G postcode
-                continue
-            if c[7]=="KY": #for some reason my postcode data excludes KY postcode
-                continue
-            if c[7]=="PH": #for some reason my postcode data excludes PH postcode
-                continue
-            if c[7]=="KA": #for some reason my postcode data excludes PH postcode
-                continue
-            if c[7]=="FK": #for some reason my postcode data excludes FK postcode
-                continue
-            if c[7]=="DD": #for some reason my postcode data excludes FK postcode
-                continue
+            #if c[7]=="EH": #for some reason my postcode data excludes EH postcode
+            #    continue
+            #if c[7]=="ML": #for some reason my postcode data excludes ML postcode
+            #    continue
+            #if c[7]=="G": #for some reason my postcode data excludes G postcode
+            #    continue
+            #if c[7]=="KY": #for some reason my postcode data excludes KY postcode
+            #    continue
+            #if c[7]=="PH": #for some reason my postcode data excludes PH postcode
+            #    continue
+            #if c[7]=="KA": #for some reason my postcode data excludes PH postcode
+            #    continue
+            #if c[7]=="FK": #for some reason my postcode data excludes FK postcode
+            #    continue
+            #if c[7]=="DD": #for some reason my postcode data excludes DD postcode
+            #    continue
             if c[8]=="ROLLS ROYCE" and c[2][0:4]=="2019":
                 cict[c[7]]+=1
             
             
 
-        print(cict)
+        #print(cict)
+        sorteed1 = sorted(cict.keys(), key=lambda p: int(cict[p]))        
+        #sorteed1.remove('pc')
+        #sorteed1.remove('BT')
+        #sorteed1.remove('EC')
+        #sorteed1.remove('GI')
+        #sorteed1.remove('GY')
+        #sorteed1.remove('WC')
+        print("2019 Rolls Royce MOT by Post Code area")
+        for a in sorteed1:
+            print(a,cict[a])
 
         cict_pc = {}
         for a in cict.keys():
+            #dont use 0 population p area code
+            if p_pcode_area[a] == 0:
+                continue
             cict_pc[a]=cict[a]/p_pcode_area[a]
 
-        sorteed = sorted(cict_pc.keys(), key=lambda p: cict_pc[p])
-        print(sorteed)
+        sorteed2 = sorted(cict_pc.keys(), key=lambda p: cict_pc[p])
+        #sorteed2.remove('pc')
+        #sorteed2.remove('BT')
+        #sorteed2.remove('EC')
+        #sorteed2.remove('GI')
+        #sorteed2.remove('GY')
+        #sorteed2.remove('WC')
+        #print(sorteed)
+        print("2019 Rolls Royce MOT by Post Code area, Per Capita")
+        for a in sorteed2:
+            print(a,cict_pc[a])
 
         sys.exit()
     
