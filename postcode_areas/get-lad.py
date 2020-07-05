@@ -6,9 +6,10 @@ import csv
 #https://ons.maps.arcgis.com/home/item.html?id=c4aeb11ff5b045018b7340e807d645cb
 
 
+
 lads = []
 
-with open("pcd11_par11_wd11_lad11_ew_lu.csv", newline='',encoding = "ISO-8859-1") as txtfile:
+with open("somefile.txt", newline='',encoding = "ISO-8859-1") as txtfile:
     areader = csv.reader(txtfile, delimiter=',')
 
     for row in areader:
@@ -26,7 +27,7 @@ print(lads)
 
 pc = []
 
-with open("pcd11_par11_wd11_lad11_ew_lu.csv", newline='',encoding = "ISO-8859-1") as txtfile:
+with open("somefile.txt", newline='',encoding = "ISO-8859-1") as txtfile:
     areader = csv.reader(txtfile, delimiter=',')
 
     for row in areader:
@@ -55,7 +56,7 @@ for a in pc:
     pc_dic[a]=[]
 
 
-with open("pcd11_par11_wd11_lad11_ew_lu.csv", newline='',encoding = "ISO-8859-1") as txtfile:
+with open("somefile.txt", newline='',encoding = "ISO-8859-1") as txtfile:
     areader = csv.reader(txtfile, delimiter=',')
 
     for row in areader:
@@ -82,7 +83,7 @@ for a in pc_dic.keys():
 ##now add the count
 #dictionary of postcode area -----> dictionary of local distrricts ----> number of postcodes
 # in that local district with that post code area
-with open("pcd11_par11_wd11_lad11_ew_lu.csv", newline='',encoding = "ISO-8859-1") as txtfile:
+with open("somefile.txt", newline='',encoding = "ISO-8859-1") as txtfile:
     areader = csv.reader(txtfile, delimiter=',')
 
     for row in areader:
@@ -100,7 +101,7 @@ print(pc_dic2)
 
 LADcount = {}
 ##a dictionary LAD name ---> overall count. non post code area specific
-with open("pcd11_par11_wd11_lad11_ew_lu.csv", newline='',encoding = "ISO-8859-1") as txtfile:
+with open("somefile.txt", newline='',encoding = "ISO-8859-1") as txtfile:
     areader = csv.reader(txtfile, delimiter=',')
 
     for row in areader:
@@ -274,5 +275,10 @@ for a in pc:
     pcapop[a]=runnngtot
 
 print(pcapop)
+
+sorteed = sorted(pcapop.keys(), key=lambda p: pcapop[p])
+
+for a in sorteed:
+    print(a,pcapop[a])   
 
 
