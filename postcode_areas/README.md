@@ -3,10 +3,13 @@ This calculates the population of post code areas, with a post code area being t
 
 ## How to use
 You need source population data is 'pops.txt' and 'LADpops.txt' is included in this code repository, and is taken from ONS data https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland  
-The postcode/local authority data is available https://ons.maps.arcgis.com/home/item.html?id=c4aeb11ff5b045018b7340e807d645cb  
-The file 'pcd11_par11_wd11_lad11_ew_lu.csv' is expected.
+  
+  
+The postcode/local authority data is available https://www.arcgis.com/sharing/rest/content/items/abd42fce1e944431b4f24881b5bb048d/data 
+The file 'ONSPD_AUG_2019_UK.csv' and 'LA_UA names and codes UK as at 12_19.csv' is expected frpm post code data zip archive.
 
 ```
+python3 full-pc.py
 python3 get-lad.py
 ```
 
