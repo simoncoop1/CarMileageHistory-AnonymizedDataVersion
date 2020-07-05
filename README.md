@@ -11,7 +11,7 @@ Then you can run
 
 data-extract.py should be in the same folder as the data.
 
-##Query MOT data
+## Query MOT data
 
 You need a MOT mileage from 2005-2019, the data of that MOT, and the date the vehicle was first registered. All available by entering a registration number on https://www.gov.uk/check-mot-history
 ```
