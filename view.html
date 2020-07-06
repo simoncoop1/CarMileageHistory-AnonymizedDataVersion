@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+body {
+  background-color: #1d0878;
+  color: #ffffff;
+}
+</style>
+
+
+
+</head>
+
+<body>
+This is the body we need a combobox.<br>
+<select name="choice" id="choice">
+  <option value="choice1">choice1</option>
+  <option value="choice2">choice2</option>
+  <option value="choice3">choice3</option>
+  <option value="choice4">choice4</option>
+</select>
+
+
+<script>
+var select = document.createElement("select");
+//var obj = JSON.parse(response);
+var obj = [{"choice":"choice1"},
+             {"choice":"choice2"},
+             {"choice":"choice3"},
+             {"choice":"choice4"},
+             {"choice":"choice5"}]
+var obj = [
+    "Land Rover",
+    "Skoda",
+    "Volswagen",
+    "Rolls Royce"
+]
+
+for (var i=0; i < obj.length; i++)
+{
+  var option = document.createElement("option");
+  //option.id = obj[i].choice;
+  option.value = obj[i];
+  option.innerHTML = obj[i];
+  select.appendChild(option);
+}
+document.body.appendChild(select);
+
+
+
+</script>
+
+</body>
+
+</html>
