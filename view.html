@@ -13,39 +13,94 @@ body {
 </head>
 
 <body>
+<script>
+function jsFunction(value)
+{
+    //delete the options
+    sltmodel.options.length=0;
+    
+    for(var i = 0; i < obj[value].length; i++) {
+        var model = obj[value][i];
+
+        var option = document.createElement("option");
+        //option.id = obj[i].choice;
+        option.value = obj[value][i];
+        option.innerHTML = obj[value][i];
+        sltmodel.appendChild(option);
+         
+
+    }
+    console.log(obj.id);
+}
+function mdl_slt(value)
+{
+    //alert(value);
+}
+</script>
+
 This is the body we need a combobox.<br>
-<select name="choice" id="choice">
+<!--<select name="choice" id="choice"onchange="jsFunction(this.value);">
   <option value="choice1">choice1</option>
   <option value="choice2">choice2</option>
   <option value="choice3">choice3</option>
   <option value="choice4">choice4</option>
 </select>
+-->
+
 
 
 <script>
 var select = document.createElement("select");
+select.setAttribute("id", "make");
+select.setAttribute("name", "make");
+select.setAttribute("onchange", "jsFunction(this.value);");
+
+var sltmodel = document.createElement("select");
+sltmodel.setAttribute("id", "model");
+sltmodel.setAttribute("name", "model");
+sltmodel.setAttribute("onchange", "mdl_slt(this.value);");
+
 //var obj = JSON.parse(response);
 var obj = [{"choice":"choice1"},
              {"choice":"choice2"},
              {"choice":"choice3"},
              {"choice":"choice4"},
-             {"choice":"choice5"}]
-var obj = [
+             {"choice":"choice5"}];
+var obj = {"ok":[
     "Land Rover",
     "Skoda",
     "Volswagen",
     "Rolls Royce"
-]
+],"ok2":["cheese"]};
 
-for (var i=0; i < obj.length; i++)
-{
-  var option = document.createElement("option");
-  //option.id = obj[i].choice;
-  option.value = obj[i];
-  option.innerHTML = obj[i];
-  select.appendChild(option);
+
+//add a select line
+var option = document.createElement("option");
+option.value="select";
+option.innerHTML = "Select";
+select.appendChild(option);
+
+for (var key in obj) {
+    if (obj.hasOwnProperty(key)){
+        var option = document.createElement("option");
+        //option.id = obj[i].choice;
+        option.value = key;
+        option.innerHTML = key;
+        select.appendChild(option);        
+    }
 }
 document.body.appendChild(select);
+document.body.appendChild(sltmodel);
+
+//for (var i=0; i < obj.length; i++)
+//{
+//  var option = document.createElement("option");
+  //option.id = obj[i].choice;
+//  option.value = obj[i];
+ // option.innerHTML = obj[i];
+//  select.appendChild(option);
+//}
+
 
 
 
