@@ -1,0 +1,14 @@
+{
+  "name": "my-mot-data",
+  "version": "1.0.0",
+  "description": "serves data for each post code area as a count and per capita",
+  "main": "theapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Simon Cooper",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
