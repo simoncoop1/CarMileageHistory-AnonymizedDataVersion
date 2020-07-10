@@ -1,5 +1,6 @@
 var express = require("express");
 var theapp = express();
+theapp.use(express.static('public'))
 
 theapp.get("/url", (req, res, next) => {
  res.json(["this","is","my","test","server"]);
@@ -27,10 +28,10 @@ theapp.listen(3000, () => {
 
 var my = "cheese";
 
-//var obj = require('all.json');
+var obj = require('./all.json');
 
 
-var obj = {
+var obj2 = {
 	    "LAND ROVER": {
 		            "DISCOVERY": [
 				                {
