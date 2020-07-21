@@ -4,6 +4,7 @@ import argparse
 import sys
 import plot
 import  json
+from datetime import datetime
 
 import matplotlib.pyplot as plt
 
@@ -144,7 +145,7 @@ if __name__ == "__main__":
     # this won't be run when imported
 
     #parse arguments
-    parser = argparse.ArgumentParser(description='comparing books for unique words')
+    parser = argparse.ArgumentParser(description='a look at anonymised MOT data.')
     parser.add_argument('regdate_motdate_motmileage',nargs=3,
                    help="""to de-anonymise data give the date vehicle was first 
                            registered, a date of an mot, and the mileage at that mot.
@@ -178,7 +179,15 @@ if __name__ == "__main__":
     parser.add_argument('--cAll', dest='cAll', action='store_true',
                help="""construct a json dictionary of counts and counts for capita in post code area for all makes and all models""")
     parser.add_argument('--question9', dest='question9', action='store_true',
-               help="""construct a json dictionary of counts and counts for capita in post code area for all makes and all models""")
+               help="""work out the mileage/age at which petrol/diesel was scrapped between 2018/2019.
+                        Basically have list of all MOT passes from 01/12/2017 to 30/11/2018(inclusive),
+                        Then a list of all mot passes 01/12/2018 to 31/12/2019. create a list of cars
+                        not in second list. Then have a look at the cars their mileage fuel, model,
+                        post code area etc.
+                        A better method might be to create a list are all cars that only appear once,
+                        in a 2 year period, so therefore they have been screapped, this would get all the cars,
+                        except is there is more than 13 month gap in MOT when someone fails to test on-time, I
+                        can get a figure for this but it is likely to be small overall.""")
 
     args = parser.parse_args()
 
@@ -597,6 +606,39 @@ if __name__ == "__main__":
         #    json.dump(j, f, ensure_ascii=False, indent=4)
 
         sys.exit()
+    if args.question9 is True:
+        ##find out which cars "disapeared" from roads
+        firstList = {}
+        scndList = {}
+        dts1 = datetime.strptime("2018-01-01","%Y-%m-%d")
+        dte1 = datetime.strptime("2018-12-31","%Y-%m-%d")
+        dts2 = datetime.strptime("2019-01-01","%Y-%m-%d")
+        dte2 = datetime.strptime("2019-12-31","%Y-%m-%d")
+
+        for c in dGenerateCars():
+            if c[2] == "test_date":
+                continue
+            dt = datetime.strptime(c[2],"%Y-%m-%d")
+            #the dates to look for 2018-01-01 to 2018-12-31
+            if (dt >= dts1) and (dt <= dte1) and (c[4] == "P"):
+                if c[1] not in firstList:
+                    firstList[c[1]]=''
+            elif (dt >= dts2) and (dt <= dte2) and (c[4] == "P"):
+                if c[1] not in scndList:
+                    scndList[c[1]]=''
+
+        print(len(firstList),len(scndList))
+
+        for i in scndList:
+            if i in firstList:
+                firstList.remove(i)
+
+        print(len(firstList))
+
+
+        sys.exit()
+
+
     if args.cAll is True:
         Getgkp()
 
