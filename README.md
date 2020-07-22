@@ -18,3 +18,5 @@ You need a MOT mileage from 2005-2019, the data of that MOT, and the date the ve
 python3 generator.py {regdate_motdate_motmileage} {regdate_motdate_motmileage} {regdate_motdate_motmileage}
 ```
 
+## MOT Data Questions  
+This script ask some set questions about the data and then proceeds to calculate an answer.
