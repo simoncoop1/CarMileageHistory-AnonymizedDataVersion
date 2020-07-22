@@ -620,10 +620,10 @@ if __name__ == "__main__":
                 continue
             dt = datetime.strptime(c[2],"%Y-%m-%d")
             #the dates to look for 2018-01-01 to 2018-12-31
-            if (dt >= dts1) and (dt <= dte1) and (c[4] == "P"):
+            if (dt >= dts1) and (dt <= dte1) and (c[5] == "P" or c[5] == "PRS") and (c[3]=="4"):
                 if c[1] not in firstList:
-                    firstList[c[1]]=''
-            elif (dt >= dts2) and (dt <= dte2) and (c[4] == "P"):
+                    firstList[c[1]]=''            
+            elif (dt >= dts2) and (dt <= dte2) and (c[5] == "P" or c[5] == "PRS") and (c[3] == "4"):
                 if c[1] not in scndList:
                     scndList[c[1]]=''
 
@@ -631,9 +631,44 @@ if __name__ == "__main__":
 
         for i in scndList:
             if i in firstList:
-                firstList.remove(i)
+                del firstList[i]
 
         print(len(firstList))
+
+        #now go over and work out the average age and mileage for diesel and pretrol
+
+        #try to free some memory
+        scndList = {}
+        newList = firstList
+        PDC = 0
+        PC = 0
+        PDM = 0
+        PM = 0
+        PDA = 0
+        PA = 0
+
+        for c in dGenerateCars():
+            if c[2]=="test_date":
+                continue
+
+            if (c[1] in newList) and (c[5]=="P" or c[5] == "PRS") and (c[3] == "4") and (datetime.strptime(c[2],"%Y-%m-%d").year == 2018) :
+
+                if c[6] == '' or c[13]=='' or c[11]=='':
+                    continue
+
+                if c[11]=="PE":
+                    PC+=1
+                    PM+=float(c[6])
+                    PA+=float((datetime.now() - datetime.strptime(c[13],"%Y-%m-%d")).days)
+                elif c[11]=="DI":
+                    PDC+=1
+                    PDM+=float(c[6])
+                    PDA+=float((datetime.now() - datetime.strptime(c[13],"%Y-%m-%d")).days)
+
+                #have each car appear once by removing
+                del newList[c[1]]
+
+        print(PDC,PC,PDM/PDC,PM/PC,PDA/PDC,PA/PC)
 
 
         sys.exit()
