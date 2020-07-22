@@ -659,16 +659,16 @@ if __name__ == "__main__":
                 if c[11]=="PE":
                     PC+=1
                     PM+=float(c[6])
-                    PA+=float((datetime.now() - datetime.strptime(c[13],"%Y-%m-%d")).days)
+                    PA+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
                 elif c[11]=="DI":
                     PDC+=1
                     PDM+=float(c[6])
-                    PDA+=float((datetime.now() - datetime.strptime(c[13],"%Y-%m-%d")).days)
+                    PDA+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
 
                 #have each car appear once by removing
                 del newList[c[1]]
 
-        print(PDC,PC,PDM/PDC,PM/PC,PDA/PDC,PA/PC)
+        print(PDC,PC,PDM/PDC,PM/PC,(PDA/PDC)/365,(PA/PC)/365)
 
 
         sys.exit()
