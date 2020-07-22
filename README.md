@@ -20,3 +20,11 @@ python3 generator.py {regdate_motdate_motmileage} {regdate_motdate_motmileage} {
 
 ## MOT Data Questions  
 This script ask some set questions about the data and then proceeds to calculate an answer.
+```
+python3 dataQs.py -question1
+```
+calculated the answer to question1.  
+```
+python3 dataQs.py
+```
+For a list of questions.
