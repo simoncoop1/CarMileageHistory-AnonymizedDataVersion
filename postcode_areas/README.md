@@ -1,5 +1,5 @@
 ## Introduction
-This calculates the population of post code areas, with a post code area being the first 1-2 alphabetic characters in a postcode. So it will show you the population of 'B' post codes which is birmingham. This is useful because it allows us to cross-reference with MOT data.
+This calculates the population of post code areas, with a post code area being the first 1-2 alphabetic characters in a postcode. So it will show you the population of 'B' post codes which is birmingham. This is useful because it allows us to cross-reference with MOT data. The web app of this project uses the result of this code. Its only necceary to run this code to modify or out of interest.
 
 ## How to use
 You need source population data is 'pops.txt' and 'LADpops.txt' is included in this code repository, and is taken from ONS data https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/populationestimatesforukenglandandwalesscotlandandnorthernireland  
