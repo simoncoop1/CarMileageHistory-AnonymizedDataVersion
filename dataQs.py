@@ -2,7 +2,6 @@ import os
 import csv
 import argparse
 import sys
-import plot
 import  json
 from datetime import datetime
 from generator import dGenerateCars
@@ -49,7 +48,8 @@ if __name__ == "__main__":
                         in a 2 year period, so therefore they have been screapped, this would get all the cars,
                         except is there is more than 13 month gap in MOT when someone fails to test on-time, I
                         can get a figure for this but it is likely to be small overall.""")
-
+    parser.add_argument('--question10', dest='question10', action='store_true',
+            help="""same as question 9 but for makes""")
     args = parser.parse_args()
 
 
@@ -562,17 +562,18 @@ if __name__ == "__main__":
                                                                                                                                             
         print(len(firstList))
                                                                                                                                             
-        #now go over and work out the average age and mileage for diesel and pretrol
+        #now go over and work out the average age and mileage for diesel and pretrol for each manufacturer
                                                                                                                                             
         #try to free some memory
         scndList = {}
         newList = firstList
-        PDC = 0
-        PC = 0
-        PDM = 0
-        PM = 0
-        PDA = 0
-        PA = 0
+        #PDC = 0
+        #PC = 0
+        #PDM = 0
+        #PM = 0
+        #PDA = 0
+        #PA = 0
+        makes = {}
                                                                                                                                             
         for c in dGenerateCars():
             if c[2]=="test_date":
@@ -580,22 +581,37 @@ if __name__ == "__main__":
                                                                                                                                             
             if (c[1] in newList) and (c[5]=="P" or c[5] == "PRS") and (c[3] == "4") and (datetime.strptime(c[2],"%Y-%m-%d").year == 2018) :
                                                                                                                                             
-                if c[6] == '' or c[13]=='' or c[11]=='':
+                if c[6] == '' or c[13]=='' or c[11]=='' or c[8]=='':
                     continue
-                                                                                                                                            
-                if c[11]=="PE":
-                    PC+=1
-                    PM+=float(c[6])
-                    PA+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
-                elif c[11]=="DI":
-                    PDC+=1
-                    PDM+=float(c[6])
-                    PDA+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
+                
+                if c[8] not in makes:
+                    makes[c[8]] = {}
+                    makes[c[8]]['C']=0
+                    makes[c[8]]['M']=0
+                    makes[c[8]]['A']=0
+
+                makes[c[8]]['C']+=1
+                makes[c[8]]['M']+=float(c[6])
+                makes[c[8]]['A']+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
+
+
+
+
                                                                                                                                             
                 #have each car appear once by removing
                 del newList[c[1]]
                                                                                                                                             
-        print(PDC,PC,PDM/PDC,PM/PC,(PDA/PDC)/365,(PA/PC)/365)
-                                                                                                                                            
-                                                                                                                                            
+        for a in makes:
+            makes[a]['mA'] = (makes[a]['A']/makes[a]['C'])/365
+            makes[a]['mM'] = makes[a]['M']/makes[a]['C']
+
+        so = sorted(makes, key=lambda x: makes[x]['mA'], reverse=True)
+        for index, s in zip(range(10),so):
+            print(s,makes[s]['mA'])
+        
+        so = sorted(makes, key=lambda x: makes[x]['mM'], reverse=True)
+        for index, s in zip(range(10),so):
+            print(s,makes[s]['mM'])
+
+                                                                                                                                                                                                                                                                                                    
         sys.exit()
