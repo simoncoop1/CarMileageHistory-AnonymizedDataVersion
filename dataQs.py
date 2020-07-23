@@ -578,8 +578,11 @@ if __name__ == "__main__":
         for c in dGenerateCars():
             if c[2]=="test_date":
                 continue
+
+            if c[13]=='':
+                continue
                                                                                                                                             
-            if (c[1] in newList) and (c[5]=="P" or c[5] == "PRS") and (c[3] == "4") and (datetime.strptime(c[2],"%Y-%m-%d").year == 2018) :
+            if (c[1] in newList) and (c[5]=="P" or c[5] == "PRS") and (c[3] == "4") and (datetime.strptime(c[2],"%Y-%m-%d").year == 2018) and (datetime.strptime(c[13],"%Y-%m-%d").year > 1994) :
                                                                                                                                             
                 if c[6] == '' or c[13]=='' or c[11]=='' or c[8]=='':
                     continue
@@ -594,9 +597,6 @@ if __name__ == "__main__":
                 makes[c[8]]['M']+=float(c[6])
                 makes[c[8]]['A']+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
 
-
-
-
                                                                                                                                             
                 #have each car appear once by removing
                 del newList[c[1]]
@@ -605,12 +605,18 @@ if __name__ == "__main__":
             makes[a]['mA'] = (makes[a]['A']/makes[a]['C'])/365
             makes[a]['mM'] = makes[a]['M']/makes[a]['C']
 
-        so = sorted(makes, key=lambda x: makes[x]['mA'], reverse=True)
-        for index, s in zip(range(10),so):
+        #get rid of dupes
+        fmakes = []
+        for a in makes:
+            if makes[a]['C']>=100:
+                fmakes.append(a)
+
+        so1 = sorted(fmakes, key=lambda x: makes[x]['mA'], reverse=True)
+        for index, s in zip(range(10),so1):
             print(s,makes[s]['mA'])
         
-        so = sorted(makes, key=lambda x: makes[x]['mM'], reverse=True)
-        for index, s in zip(range(10),so):
+        so2 = sorted(fmakes, key=lambda x: makes[x]['mM'], reverse=True)
+        for index, s in zip(range(10),so2):
             print(s,makes[s]['mM'])
 
                                                                                                                                                                                                                                                                                                     
