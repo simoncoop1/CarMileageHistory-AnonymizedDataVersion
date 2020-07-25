@@ -79,6 +79,8 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).text()
                 model = item[1];
                 aA = json[0][make][model]['mA'];
                 aM = json[0][make][model]['mM'];
+                aA  =  Number( aA.toPrecision(3) );
+                aM = Math.round(aM);
 
 
                 $('.my_table').append('<tr><td>'+make+'</td><td>'+model+'</td><td>'+aA+'</td><td>'+aM+'</td></tr>');
