@@ -2,11 +2,16 @@
     <head>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <style>
+            /*sortable table*/
             th, table, td{
                 border: 1px solid black;
             }
             th {
                 cursor: pointer;
+            }
+            /*everything else*/
+            #my_body{
+                max-width:1024px;
             }
         </style>
 
@@ -29,7 +34,7 @@
         </script>
 
     </head>
-    <body id="my_body" style="width:1024px;">
+    <body id="my_body">
         This is a sortable table of the cars that vanished from MOT records between 2018-2019. If a vehicle stops getting MOT then it has assumed to be scrapped. By looking at the age and the mileage and age of these vehicles, we can find out which models tend to last the longest, and which tend to the most miles.<br>
         <table class="my_table">
             <tr class = "my_tr">
