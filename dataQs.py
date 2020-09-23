@@ -6,6 +6,107 @@ import  json
 from datetime import datetime
 from generator import dGenerateCars
 
+#you can set a threshold for are particular model to be included in the list
+# it is useful to get rid of uninterestng results like where only one example
+#of a model exists it is not useful to conclude much from this because a) the
+#method being used to record off road vehicles if not 100% perfect b) you may
+#be insterest is mass volume vehicles
+def carsOfRoad(theLimit):
+    #find out which cars "disapeared" from roads
+    firstList = {}
+    scndList = {}
+    dts1 = datetime.strptime("2018-01-01","%Y-%m-%d")
+    dte1 = datetime.strptime("2018-12-31","%Y-%m-%d")
+    dts2 = datetime.strptime("2019-01-01","%Y-%m-%d")
+    dte2 = datetime.strptime("2019-12-31","%Y-%m-%d")
+    
+    for c in dGenerateCars():
+        if c[2] == "test_date":
+            continue
+        dt = datetime.strptime(c[2],"%Y-%m-%d")
+        #the dates to look for 2018-01-01 to 2018-12-31
+        if (dt >= dts1) and (dt <= dte1) and (c[5] == "P" or c[5] == "PRS") and (c[3]=="4"):
+            if c[1] not in firstList:
+                firstList[c[1]]=''            
+        elif (dt >= dts2) and (dt <= dte2) and (c[5] == "P" or c[5] == "PRS") and (c[3] == "4"):
+            if c[1] not in scndList:
+                scndList[c[1]]=''
+    
+    print(len(firstList),len(scndList))
+                                                                                                                                      
+    for i in scndList:
+        if i in firstList:
+            del firstList[i]
+                                                                                                                                      
+    print(len(firstList))
+                                                                                                                                      
+    #now go over and work out the average age and mileage for diesel and pretrol for each manufacturer
+
+    #try to free some memory
+    scndList = {}
+    newList = firstList
+    #PDC = 0
+    #PC = 0
+    #PDM = 0
+    #PM = 0
+    #PDA = 0
+    #PA = 0
+    makes = {}
+                                                                                                                                  
+    for c in dGenerateCars():
+        if c[2]=="test_date":
+            continue
+
+        if c[13]=='':
+            continue
+                                                                                                                                 
+        if (c[1] in newList) and (c[5]=="P" or c[5] == "PRS") and (c[3] == "4") and (datetime.strptime(c[2],"%Y-%m-%d").year == 2018) and (datetime.strptime(c[13],"%Y-%m-%d").year > 1994) :
+                                                                                                                                 
+            if c[6] == '' or c[13]=='' or c[11]=='' or c[8]=='' or c[9] == '':
+                continue
+            
+            if c[8] not in makes:
+                makes[c[8]] = {}
+            
+            if c[9] not in makes[c[8]]:
+                makes[c[8]][c[9]]= {}
+                makes[c[8]][c[9]]['C']=0
+                makes[c[8]][c[9]]['M']=0
+                makes[c[8]][c[9]]['A']=0
+
+            makes[c[8]][c[9]]['C']+=1
+            makes[c[8]][c[9]]['M']+=float(c[6])
+            makes[c[8]][c[9]]['A']+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
+            
+            #have each car appear once by removing
+            del newList[c[1]]
+                                                                                                                                 
+    for a in makes:
+        for b in makes[a]:
+            makes[a][b]['mA'] = (makes[a][b]['A']/makes[a][b]['C'])/365
+            makes[a][b]['mM'] = makes[a][b]['M']/makes[a][b]['C']
+
+    #get rid of dupes, flatten make dictionary to list->dictionary,
+    # to make things simpler
+    fmakes = []
+    for a in makes:
+        for b in makes[a]:
+            if makes[a][b]['C']>=theLimit:
+                fmakes.append([a,b])
+
+    so1 = sorted(fmakes, key=lambda x: makes[x[0]][x[1]]['mA'], reverse=True)
+    data = [makes,so1]    
+            
+    #for index, s in zip(range(50),so1):
+    #    print(s,makes[s]['mA'])
+    
+    #so2 = sorted(fmakes, key=lambda x: makes[x]['mM'], reverse=True)
+    #for index, s in zip(range(50),so2);
+    #    print(s,makes[s]['mM'])
+
+    filen = 'off-road-by-make-{}.json'.format(theLimit)
+    with open(filen, 'w', encoding='utf-8') as f: 
+            json.dump(data, f, ensure_ascii=False, indent=4) 
 
 if __name__ == "__main__":
     # this won't be run when imported
@@ -51,10 +152,11 @@ if __name__ == "__main__":
     parser.add_argument('--question10', dest='question10', action='store_true',
             help="""same as question 9 but for makes""")    
     parser.add_argument('--question11', dest='question11', action='store_true',
-            help="""same as question 10 but for makes and models""")
-
+            help="""same as question 10 but for makes and models and outputs json, no terminal output""")
+    parser.add_argument('--question12', dest='question12', action='store_true',
+            help="""Find the vehicle accross all years with the most MOT passes.""")
+    
     args = parser.parse_args()
-
 
     if args.question1 is True:
         ##work out the question and give an answer
@@ -624,100 +726,18 @@ if __name__ == "__main__":
         sys.exit()
 
     if args.question11 is True:
-        ##find out which cars "disapeared" from roads
-        firstList = {}
-        scndList = {}
-        dts1 = datetime.strptime("2018-01-01","%Y-%m-%d")
-        dte1 = datetime.strptime("2018-12-31","%Y-%m-%d")
-        dts2 = datetime.strptime("2019-01-01","%Y-%m-%d")
-        dte2 = datetime.strptime("2019-12-31","%Y-%m-%d")
-                                                                                                                                            
-        for c in dGenerateCars():
-            if c[2] == "test_date":
-                continue
-            dt = datetime.strptime(c[2],"%Y-%m-%d")
-            #the dates to look for 2018-01-01 to 2018-12-31
-            if (dt >= dts1) and (dt <= dte1) and (c[5] == "P" or c[5] == "PRS") and (c[3]=="4"):
-                if c[1] not in firstList:
-                    firstList[c[1]]=''            
-            elif (dt >= dts2) and (dt <= dte2) and (c[5] == "P" or c[5] == "PRS") and (c[3] == "4"):
-                if c[1] not in scndList:
-                    scndList[c[1]]=''
-                                                                                                                                            
-        print(len(firstList),len(scndList))
-                                                                                                                                            
-        for i in scndList:
-            if i in firstList:
-                del firstList[i]
-                                                                                                                                            
-        print(len(firstList))
-                                                                                                                                            
-        #now go over and work out the average age and mileage for diesel and pretrol for each manufacturer
-                                                                                                                                            
-        #try to free some memory
-        scndList = {}
-        newList = firstList
-        #PDC = 0
-        #PC = 0
-        #PDM = 0
-        #PM = 0
-        #PDA = 0
-        #PA = 0
-        makes = {}
-                                                                                                                                            
-        for c in dGenerateCars():
-            if c[2]=="test_date":
-                continue
+        limits = [4,40,400]
+        for aLimit in limits:
+            carsOfRoad(aLimit)
 
-            if c[13]=='':
-                continue
-                                                                                                                                            
-            if (c[1] in newList) and (c[5]=="P" or c[5] == "PRS") and (c[3] == "4") and (datetime.strptime(c[2],"%Y-%m-%d").year == 2018) and (datetime.strptime(c[13],"%Y-%m-%d").year > 1994) :
-                                                                                                                                            
-                if c[6] == '' or c[13]=='' or c[11]=='' or c[8]=='' or c[9] == '':
-                    continue
-                
-                if c[8] not in makes:
-                    makes[c[8]] = {}
-                
-                if c[9] not in makes[c[8]]:
-                    makes[c[8]][c[9]]= {}
-                    makes[c[8]][c[9]]['C']=0
-                    makes[c[8]][c[9]]['M']=0
-                    makes[c[8]][c[9]]['A']=0
+        sys.exit()
 
-                makes[c[8]][c[9]]['C']+=1
-                makes[c[8]][c[9]]['M']+=float(c[6])
-                makes[c[8]][c[9]]['A']+=float((datetime.strptime("2019-01-01","%Y-%m-%d") - datetime.strptime(c[13],"%Y-%m-%d")).days)
-
-                                                                                                                                            
-                #have each car appear once by removing
-                del newList[c[1]]
-                                                                                                                                            
-        for a in makes:
-            for b in makes[a]:
-                makes[a][b]['mA'] = (makes[a][b]['A']/makes[a][b]['C'])/365
-                makes[a][b]['mM'] = makes[a][b]['M']/makes[a][b]['C']
-
-        #get rid of dupes, flatten make dictionary to list->dictionary,
-        # to make things simpler
-        fmakes = []
-        for a in makes:
-            for b in makes[a]:
-                if makes[a][b]['C']>=40:
-                    fmakes.append([a,b])
-
-        so1 = sorted(fmakes, key=lambda x: makes[x[0]][x[1]]['mA'], reverse=True)
-        data = [makes,so1]    
-                
-        #for index, s in zip(range(50),so1):
-        #    print(s,makes[s]['mA'])
-        
-        #so2 = sorted(fmakes, key=lambda x: makes[x]['mM'], reverse=True)
-        #for index, s in zip(range(50),so2);
-        #    print(s,makes[s]['mM'])
-
-        with open('off-road-by-make.json', 'w', encoding='utf-8') as f: 
-                json.dump(data, f, ensure_ascii=False, indent=4) 
+    if args.question12 is True:
+        #find the vehicle with the most MOT passes accross all records
+        #this is challenging since to record a count of every vehicles
+        #will have to be done on file due to size.
+        #Have a SQLite table with carid and field counting MOT passes,
+        #both P and PRS combined. carid has to be indexed-keyfield. At
+        #the end find the max in count field. There may be multiple.
 
         sys.exit()
