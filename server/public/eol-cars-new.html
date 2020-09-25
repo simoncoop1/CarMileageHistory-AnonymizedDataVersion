@@ -1,0 +1,32 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div id="paged_EOL">
+        </div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+        <!--<script src="like_button.js"></script>-->
+        <script type="text/babel" src="my-react.js"></script>
+        <script type="text/babel">
+            //'use strict';
+            //const e = React.createElement;
+            //Class PagedEOLCar extends React.Component{
+            //    render(){
+            //        return (
+            //            <h1>EOL Cars</h1>
+            //        );
+            //    }
+            //}
+
+            //const CARS = ['Ford','VW'];
+            const element = <MyComponent name="sara" />
+            const domContainer = document.querySelector('#paged_EOL');
+            ReactDOM.render(element, domContainer);
+
+        </script>
+    </body>
+
+</html>
