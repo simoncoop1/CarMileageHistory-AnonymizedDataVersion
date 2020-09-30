@@ -1,8 +1,12 @@
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./eol.css"/>
+
+     </style>
     </head>
     <body>
-        <div id="paged_EOL">
+        <div id="paged-eol">          
         </div>
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
@@ -22,8 +26,8 @@
             //}
 
             //const CARS = ['Ford','VW'];
-            const element = <MyComponent name="sara" />
-            const domContainer = document.querySelector('#paged_EOL');
+            const element = <PagedEOLControl name="sara" />
+            const domContainer = document.querySelector('#paged-eol');
             ReactDOM.render(element, domContainer);
 
         </script>

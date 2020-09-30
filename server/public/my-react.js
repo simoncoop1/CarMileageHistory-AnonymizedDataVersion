@@ -16,10 +16,10 @@ class SingleItem extends React.Component{
         const ITEM = ["a make","a model","a mean age","a mean mileage" ];
         return (
             <tr>
-            <td>{ITEM[0]}</td>
-            <td>{ITEM[1]}</td>
-            <td>{ITEM[2]}</td>
-            <td>{ITEM[3]}</td>
+            <td>{this.props.make}</td>
+            <td>{this.props.model}</td>
+            <td>{this.props.avMileage}</td>
+            <td>{this.props.avAge}</td>
             </tr>
         );
     }
@@ -31,7 +31,7 @@ class SinglePage extends React.Component{
     }
 
     render(){
-        const listItems = this.props.page.map((car) => <SingleItem key={car[0]} make ={car[0]}/>);
+        const listItems = this.props.page.map((car) => <SingleItem key={car['make']+car['model']} make ={car['make']} model={car['model']} avMileage="22" avAge="22"/>);
         return(
             <table className="my-table">
                 <thead>
@@ -80,15 +80,52 @@ class SortControl extends React.Component{
 class PagedEOLControl extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            error: null,
+            isLoaded:false,
+            items:[],
+            page:1,
+            itemsPerPage:40,
+        };
+    }
+
+    componentDidMount(){
+        fetch("off-road-by-make-40-react.json")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        isLoaded: true,
+                        items: result,
+                    });
+                    console.log(result.length);
+                    
+                },
+                // Note: it's important to handle errors here
+                // instead of a catch() block so that we don't swallow
+                // exceptions from actual bugs in components.
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+
     }
 
     render(){
+        //const page = [['VW','Golf','11','55'],['Ford','Focus','10','56']];
 
-        const page = [['VW','Golf','11','55'],['Ford','Focus','10','56']];
+        const page = this.state.items.slice(0,40);
+
+
+        
 
         return(
-            <div>
+            <div className ="my-style">
                 <h1>Cars Taken Off Road</h1><br/>
+                {String(this.state.isLoaded)}<br/>
                 <SortControl/><br/>
                 <SinglePage page={page}/>
                 <PageControl/>
