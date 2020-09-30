@@ -1,0 +1,29 @@
+.my-style{
+    border-color:lightgray;
+    border-width:5px;
+    border-style:solid;
+    background-color:wheat;
+    max-width:1024px;
+    padding:3px;
+    margin: 0 auto;
+}
+.highlight-sort{
+    background-color: gray;
+    color: beige;
+    text-decoration: none;
+}
+#paged-eol{
+}
+body{
+    background:lightyellow;
+    font-family: 'Lato', sans-serif;
+    /*font-weight:600;*/
+}
+div{
+}
+h1{
+    font-family: 'Roboto', sans-serif;
+}
+thead{
+    font-family: 'Roboto', sans-serif;
+}
