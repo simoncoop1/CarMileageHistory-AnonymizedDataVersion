@@ -14,6 +14,41 @@
 }
 #paged-eol{
 }
+.flex-container {
+    display:flex;
+    flex-wrap: nowrap;
+    background-colour: DodgerBlue;
+}
+.flex-container > div {
+    /*background-color: #f1f1f1;*/
+    /*width: 50%;*/
+    /* margin 100px;*/
+    padding-inline:1em;
+    text-align:left;
+    /*line-height:75px;*/
+    /*font-size: 30px;*/
+}
+.my-button{
+    padding: 0.3rem 0.75rem;
+    margin: 0rem 0.75rem;
+    font-size:1.5em;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    border: 1px solid gray;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+}
+button:not(:disabled){
+    cursor: pointer;
+}
+.my-button:hover{
+    color:white;
+    background-color: gray
+}
+.my-button:focus{
+    box-shadow: 0 0 0 0.2rem rgba(200,200,200);
+}
+
 body{
     background:lightyellow;
     font-family: 'Lato', sans-serif;
